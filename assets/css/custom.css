@@ -1,13 +1,9 @@
-@import "tailwindcss";
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
 
-@layer base {
-  body {
-    font-family: 'Inter', system-ui, -apple-system, sans-serif;
-  }
-
-  h1, h2, h3, h4, .font-display {
-    font-family: 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif;
-  }
+h1, h2, h3, h4, .font-display {
+  font-family: 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif;
 }
 
 @keyframes floatSlow {
@@ -24,7 +20,7 @@
 }
 
 .glass-nav {
-  background: rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.88);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
 }
