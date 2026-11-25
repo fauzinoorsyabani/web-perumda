@@ -1,32 +1,13 @@
-# Portal Website Perumda Air Minum Tirta Sukapura (Redesign 2026 — PHP)
+# Portal Website Perumda Air Minum Tirta Sukapura (Multi-Page PHP • 2026)
 
-Redesign modern website resmi **Perumda Air Minum Tirta Sukapura Kabupaten Tasikmalaya** menggunakan **PHP Native Modular (PHP 7.4 / 8.x)** + **Tailwind CSS v4** + **Vanilla JS**, siap langsung dipasang di server **Apache / cPanel / Laragon / Herd / XAMPP** tanpa proses build Node.js.
+Website resmi generasi baru **Perumda Air Minum Tirta Sukapura Kabupaten Tasikmalaya** dibangun dengan **PHP Native Modular Multi-Halaman (PHP 8.x)**, sistem warna civic-water tanpa gradient berlebihan, animasi marquee kanan-ke-kiri & scroll choreography, serta optimasi penuh **SEO + AEO + GEO**.
 
-## Struktur Folder
-```
-├── index.php                     # Entry point utama
-├── .htaccess                     # Konfigurasi Apache & proteksi folder internal
-├── favicon.ico                   # Favicon resmi Perumda
-├── config/
-│   ├── data.php                  # Data konten website (layanan, berita, sejarah, tarif, mitra)
-│   └── database.example.php      # Template koneksi PDO MySQL/MariaDB
-├── includes/
-│   ├── header.php                # Head, top utility bar, glassmorphic navbar
-│   ├── hero.php                  # Hero section & akses cepat pelanggan
-│   ├── services.php              # 6 layanan digital + kalkulator estimasi tagihan air
-│   ├── profile.php               # Tab Sejarah, Visi Misi, Sistem Air Minum, Prosedur
-│   ├── news.php                  # Berita, filter kategori, & modal reader
-│   └── footer.php                # Mitra pembayaran, SIMPADU/GIS, kontak, & footer
-└── assets/
-    ├── css/custom.css            # Custom styling & animasi
-    ├── js/app.js                 # Interaksi menu mobile, kalkulator, tab, filter & modal
-    └── images/logo-perumda.png   # Logo resmi Perumda Tirta Sukapura
-```
-
-## Cara Menjalankan di Lokal
-1. **Laragon / XAMPP**: simpan/clone folder ini di `C:\laragon\www\web-perumda` atau `C:\xampp\htdocs\web-perumda`, lalu buka `http://localhost/web-perumda`.
-2. **PHP Built-in Server**:
-   ```bash
-   php -S localhost:8000
-   ```
-3. **Upload ke Server Kantor (Apache / cPanel)**: upload seluruh isi folder ke `public_html` atau `/var/www/html`.
+## Halaman & Endpoint
+- `index.php` — Beranda (Hero, Live Info Ticker, Marquee Mitra Kanan-ke-Kiri, Akses Cepat Visual, Sekilas Infrastruktur, Berita Utama, FAQ AEO)
+- `layanan.php` — 6 Layanan Digital Pelanggan, Prosedur Resmi (`HowTo` Schema), Simulasi Tarif, & FAQ Lengkap (`FAQPage` Schema)
+- `profil.php` — Visi & Misi, Sejarah 1925–2026, Tabel 9 Sumber Air Baku (513 L/dtk), & Tren Cakupan Pelayanan
+- `berita.php` — Daftar Berita, Info Gangguan & Edukasi Pelanggan dengan Filter Kategori & Pencarian Real-time
+- `berita-detail.php?slug=...` — Halaman Detail Artikel lengkap dengan Poin Penting, `NewsArticle` JSON-LD, & Berita Terkait
+- `kontak.php` — Alamat Kantor Pusat, Google Maps, Form WhatsApp Call Center, & Direktori 17 Cabang/Unit Pelayanan
+- `sitemap.xml.php` — XML Sitemap dinamis seluruh halaman & berita
+- `robots.txt` & `llms.txt` — Konfigurasi crawler SEO & AI Answer/Generative Engine (AEO/GEO)

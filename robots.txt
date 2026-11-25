@@ -1,0 +1,23 @@
+User-agent: *
+Allow: /
+Disallow: /config/
+Disallow: /includes/
+
+# Explicit support for AI Answer & Generative Engines (AEO / GEO)
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+Sitemap: /sitemap.xml.php
+# AI Knowledge Summary: /llms.txt

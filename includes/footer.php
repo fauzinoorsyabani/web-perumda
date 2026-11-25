@@ -1,85 +1,87 @@
-<!-- Clean Payment Partners Strip (no boxes) -->
-<section class="py-12 bg-white border-t border-slate-200">
-  <div class="max-w-6xl mx-auto px-4 sm:px-6">
-    <div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
-      <div class="shrink-0">
-        <p class="text-xs font-semibold uppercase tracking-[0.14em] text-slate-500">
-          Mitra Pembayaran Resmi
-        </p>
-      </div>
-      <div class="flex flex-wrap items-center gap-x-10 gap-y-5">
-        <?php foreach ($paymentPartners as $partner): ?>
+<!-- Footer -->
+<footer class="bg-[#06182B] text-slate-300 mt-auto">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-10">
+    <div class="grid md:grid-cols-2 lg:grid-cols-12 gap-10 pb-12 border-b border-white/10">
+      <!-- Brand Identity -->
+      <div class="lg:col-span-4 space-y-4">
+        <a href="index.php" class="inline-flex items-center gap-3">
           <img
-            src="<?= e($partner['logo']) ?>"
-            alt="<?= e($partner['name']) ?>"
-            title="<?= e($partner['name']) ?>"
-            loading="lazy"
-            class="h-8 w-auto object-contain opacity-80 hover:opacity-100 transition-opacity"
+            src="assets/images/logo-perumda.png"
+            alt="Logo Perumda Tirta Sukapura"
+            class="h-11 w-auto object-contain bg-white rounded-lg p-1.5"
             onerror="this.style.display='none'"
           />
-        <?php endforeach; ?>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Flat Solid Footer -->
-<footer id="kontak" class="bg-[#0B2545] text-slate-300 pt-14 pb-10">
-  <div class="max-w-6xl mx-auto px-4 sm:px-6">
-    <div class="grid md:grid-cols-3 gap-10 pb-10 border-b border-white/15">
-      <!-- Identitas -->
-      <div class="space-y-3">
-        <div class="font-display font-bold text-white text-base">
-          <?= e($officeInfo['name']) ?>
-        </div>
+          <div>
+            <div class="font-display font-extrabold text-white text-base">
+              <?= e($officeInfo['name']) ?>
+            </div>
+            <div class="text-xs text-sky-300 font-medium">
+              BUMD Pemerintah <?= e($officeInfo['region']) ?>
+            </div>
+          </div>
+        </a>
         <p class="text-sm text-slate-400 leading-relaxed">
-          BUMD Pemerintah Daerah Kabupaten Tasikmalaya penyedia layanan air minum.
+          Melayani kebutuhan air minum bersih yang <strong>aman, kontinu, dan transparan</strong>
+          bagi masyarakat Kabupaten &amp; Kota Tasikmalaya sejak 1925.
         </p>
       </div>
 
-      <!-- Kontak & Jam Kerja -->
-      <div class="space-y-2.5 text-sm">
-        <div class="font-display font-bold text-white text-xs uppercase tracking-wider mb-3">
-          Kontak &amp; Jam Kerja
-        </div>
-        <div>
-          <a href="tel:<?= e($officeInfo['phone_clean']) ?>" class="text-white font-semibold hover:text-sky-300">
-            <?= e($officeInfo['phone']) ?>
-          </a>
-        </div>
-        <div>
-          <a href="mailto:<?= e($officeInfo['email']) ?>" class="hover:text-white">
-            <?= e($officeInfo['email']) ?>
-          </a>
-        </div>
-        <div class="text-slate-400 pt-1"><?= e($officeInfo['hours_weekday']) ?></div>
+      <!-- Navigasi -->
+      <div class="lg:col-span-2 space-y-3 text-sm">
+        <h3 class="font-display font-bold text-white text-xs uppercase tracking-wider">Halaman</h3>
+        <ul class="space-y-2.5">
+          <?php foreach ($navLinks as $item): ?>
+            <li>
+              <a href="<?= e($item['href']) ?>" class="text-slate-400 hover:text-white transition-colors">
+                <?= e($item['label']) ?>
+              </a>
+            </li>
+          <?php endforeach; ?>
+        </ul>
       </div>
 
-      <!-- Sistem Internal -->
-      <div class="space-y-2.5 text-sm">
-        <div class="font-display font-bold text-white text-xs uppercase tracking-wider mb-3">
-          Portal Terhubung
-        </div>
-        <div class="flex flex-col gap-2">
-          <a href="<?= e($officeInfo['simpadu_url']) ?>" target="_blank" rel="noopener noreferrer" class="hover:text-white inline-flex items-center gap-1.5">
-            <span>Launcher SIMPADU</span>
-            <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
-          </a>
-          <a href="<?= e($officeInfo['gis_url']) ?>" target="_blank" rel="noopener noreferrer" class="hover:text-white inline-flex items-center gap-1.5">
-            <span>GIS Tirta Sukapura</span>
-            <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
-          </a>
-          <a href="<?= e($officeInfo['simpel_url']) ?>" target="_blank" rel="noopener noreferrer" class="hover:text-white inline-flex items-center gap-1.5">
-            <span>SIMPEL Pelanggan Baru</span>
-            <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
-          </a>
+      <!-- Portal Digital -->
+      <div class="lg:col-span-3 space-y-3 text-sm">
+        <h3 class="font-display font-bold text-white text-xs uppercase tracking-wider">Portal Digital</h3>
+        <ul class="space-y-2.5">
+          <li><a href="<?= e($officeInfo['bill_url']) ?>" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-white transition-colors">Cek Tagihan Air</a></li>
+          <li><a href="<?= e($officeInfo['simpel_url']) ?>" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-white transition-colors">Daftar Baru (SIMPEL)</a></li>
+          <li><a href="<?= e($officeInfo['complaint_url']) ?>" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-white transition-colors">Pengaduan Online</a></li>
+          <li><a href="<?= e($officeInfo['simpadu_url']) ?>" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-white transition-colors">Launcher SIMPADU</a></li>
+          <li><a href="<?= e($officeInfo['gis_url']) ?>" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-white transition-colors">GIS Jaringan Pipa</a></li>
+        </ul>
+      </div>
+
+      <!-- Kontak Kantor Pusat -->
+      <div class="lg:col-span-3 space-y-3 text-sm">
+        <h3 class="font-display font-bold text-white text-xs uppercase tracking-wider">Kantor Pusat</h3>
+        <p class="text-slate-400 leading-relaxed">
+          <?= e($officeInfo['address']) ?>
+        </p>
+        <div class="space-y-1.5 pt-1">
+          <div>
+            <a href="tel:<?= e($officeInfo['phone_clean']) ?>" class="text-white font-bold hover:text-sky-300 transition-colors">
+              <?= e($officeInfo['phone']) ?>
+            </a>
+            <span class="text-xs text-slate-400 ml-1">(Call Center)</span>
+          </div>
+          <div class="text-slate-400 text-xs">Telp. <?= e($officeInfo['office_phone']) ?></div>
+          <div>
+            <a href="mailto:<?= e($officeInfo['email']) ?>" class="text-sky-300 hover:text-white text-xs transition-colors">
+              <?= e($officeInfo['email']) ?>
+            </a>
+          </div>
         </div>
       </div>
     </div>
 
-    <div class="pt-6 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-slate-400">
-      <span>© <?= date('Y') ?> Perumda Air Minum Tirta Sukapura Kabupaten Tasikmalaya.</span>
-      <span>Didukung oleh Pemkab Tasikmalaya</span>
+    <div class="pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-400">
+      <p>© <?= date('Y') ?> <strong><?= e($officeInfo['name']) ?></strong>. Hak cipta dilindungi.</p>
+      <div class="flex items-center gap-4">
+        <a href="sitemap.xml.php" class="hover:text-white transition-colors">Sitemap</a>
+        <a href="llms.txt" class="hover:text-white transition-colors">AI Info (llms.txt)</a>
+        <a href="kontak.php" class="hover:text-white transition-colors">Bantuan</a>
+      </div>
     </div>
   </div>
 </footer>

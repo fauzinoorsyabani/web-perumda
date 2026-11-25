@@ -1,0 +1,31 @@
+# Perumda Air Minum Tirta Sukapura — Kabupaten Tasikmalaya
+
+> Portal resmi Perusahaan Umum Daerah (Perumda) Air Minum Tirta Sukapura, BUMD milik Pemerintah Kabupaten Tasikmalaya yang melayani kebutuhan air minum bersih masyarakat Kabupaten dan Kota Tasikmalaya sejak tahun 1925.
+
+## Ringkasan Entitas (Verified Facts)
+- **Nama Resmi:** Perumda Air Minum Tirta Sukapura (sebelumnya PDAM Kabupaten Tasikmalaya)
+- **Dasar Pendirian:** Perda DT II Tasikmalaya No. 7 Tahun 1975 (11 Juni 1975) & Perda No. 24 Tahun 2002
+- **Kantor Pusat:** Jl. Jenderal A.H. Nasution Km. 8, Kabupaten Tasikmalaya, Jawa Barat 46181, Indonesia
+- **Call Center / WhatsApp 24 Jam:** +62 821-2910-2345
+- **Telepon Kantor Pusat:** (0265) 325065 / (0265) 320921
+- **Email Resmi:** perumdatirtasukapura@gmail.com | info@pdamtirtasukapura.co.id
+- **Jam Kerja Loket:** Senin – Jum'at, 08:00 – 16:00 WIB (Sabtu–Minggu Libur)
+- **Kapasitas Produksi Terpasang:** 513 Liter/detik (473 L/dtk dari 7 kelompok mata air alami termasuk Mata Air Cipondok 367 L/dtk & Leuwirupit 50 L/dtk, ditambah 40 L/dtk dari IPA Sungai Ciwulan & Cilangla)
+- **Mitra Pembayaran Resmi:** Bank BJB, Bank BJB Syariah, Bank BNI, Bank Mandiri, PT Pos Indonesia
+
+## Halaman Utama Portal
+- [Beranda](index.php): Ringkasan layanan pelanggan, informasi terbaru, mitra pembayaran, dan akses cepat.
+- [Layanan & Tarif](layanan.php): 6 layanan digital pelanggan, prosedur sambungan baru, balik nama, klasifikasi tarif, simulasi estimasi rekening, dan FAQ.
+- [Profil Perusahaan](profil.php): Sejarah sejak 1925, visi misi, sumber air baku, kapasitas produksi (513 L/dtk), dan cakupan pelayanan.
+- [Berita & Info Gangguan](berita.php): Pemberitahuan gangguan aliran air, perbaikan jaringan pipa distribusi, laporan kinerja, dan tips hemat air.
+- [Kontak & Cabang](kontak.php): Alamat Kantor Pusat, daftar 8+ kantor cabang pelayanan Tasikmalaya, formulir kontak, dan peta lokasi.
+
+## Layanan Digital Pelanggan (Direct Portals)
+- Cek Tagihan Rekening Air: http://asindotama.com/layanantirtasukapura/
+- Pendaftaran Pelanggan Baru (SIMPEL): https://simpel.app-tirtasukapura.com/panel/public-page/pendaftaran
+- Pengaduan Online (Tiket Gangguan): http://app-tirtasukapura.com/pengaduan/ticketOnline
+- Lacak Status Pengaduan: http://app-tirtasukapura.com/pengaduan/ticketTrack
+- Catat Meter Mandiri: http://asindotama.com/pdamtasik/cater/Catermandiri
+- Statistik Pemakaian Air: http://app-tirtasukapura.com/infopelanggan-v2/Apps/statistikpel
+- Launcher SIMPADU (Internal): http://app-tirtasukapura.com/
+- GIS Jaringan Perpipaan: https://gis.app-tirtasukapura.com/
