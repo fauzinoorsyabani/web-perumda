@@ -1,172 +1,144 @@
-<section id="layanan" class="py-20 lg:py-24 bg-slate-50">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <!-- Section Header -->
-    <div class="max-w-2xl mb-12">
-      <span class="inline-flex items-center px-3 py-1 rounded-full bg-sky-100 text-sky-800 text-xs font-bold uppercase tracking-wider">
-        Layanan Digital Pelanggan
-      </span>
-      <h2 class="font-display text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3 tracking-tight">
-        Semua Kebutuhan Pelanggan, Lebih Cepat &amp; Transparan
-      </h2>
-      <p class="text-slate-600 mt-3 text-base leading-relaxed">
-        Akses langsung 6 layanan online resmi Perumda Air Minum Tirta Sukapura tanpa harus
-        datang ke loket kantor.
+<section id="layanan" class="py-16 lg:py-20 bg-white">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6">
+    <!-- Header -->
+    <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pb-8 border-b border-slate-200">
+      <div>
+        <p class="text-xs font-semibold uppercase tracking-[0.14em] text-[#0077B6]">
+          Layanan Online
+        </p>
+        <h2 class="font-display text-2xl sm:text-3xl font-bold text-[#0B2545] mt-1">
+          Akses Cepat Pelanggan
+        </h2>
+      </div>
+      <p class="text-sm text-slate-500 max-w-sm">
+        Pilih layanan di bawah untuk langsung terhubung ke portal resmi Tirta Sukapura.
       </p>
     </div>
 
-    <!-- 6 Bento Service Cards -->
-    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    <!-- Clean Editorial 3x2 Grid (hairline dividers, no heavy card slop) -->
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 divide-y sm:divide-y-0 sm:gap-x-10 sm:gap-y-2">
       <?php foreach ($digitalServices as $service): ?>
         <a
           href="<?= e($service['href']) ?>"
           target="_blank"
           rel="noopener noreferrer"
-          class="group relative flex flex-col justify-between rounded-3xl bg-white p-6 sm:p-7 border border-slate-200/80 shadow-xs hover:shadow-xl hover:shadow-sky-900/5 hover:border-sky-300 transition-all duration-300 hover:-translate-y-1"
+          class="group py-6 border-b border-slate-200 flex items-start justify-between gap-4 hover:bg-[#F4F6F9]/70 -mx-3 px-3 rounded-lg transition-colors"
         >
-          <div>
-            <div class="flex items-start justify-between gap-4 mb-5">
-              <div class="w-12 h-12 rounded-2xl bg-gradient-to-br <?= e($service['accent']) ?> text-white flex items-center justify-center shadow-md">
-                <i data-lucide="<?= e($service['icon']) ?>" class="w-6 h-6"></i>
-              </div>
-              <span class="px-2.5 py-1 rounded-full bg-slate-100 text-slate-600 text-[11px] font-semibold">
-                <?= e($service['badge']) ?>
-              </span>
+          <div class="space-y-1.5">
+            <div class="flex items-center gap-2.5">
+              <i data-lucide="<?= e($service['icon']) ?>" class="w-4 h-4 text-[#0077B6] shrink-0"></i>
+              <h3 class="font-display font-bold text-base text-[#0B2545] group-hover:text-[#0077B6] transition-colors">
+                <?= e($service['title']) ?>
+              </h3>
             </div>
-
-            <div class="text-xs font-semibold text-sky-700 uppercase tracking-wide">
-              <?= e($service['subtitle']) ?>
-            </div>
-            <h3 class="font-display text-xl font-bold text-slate-900 mt-1 group-hover:text-sky-700 transition-colors">
-              <?= e($service['title']) ?>
-            </h3>
-            <p class="text-sm text-slate-600 mt-2.5 leading-relaxed">
+            <p class="text-sm text-slate-600 leading-relaxed pl-6.5">
               <?= e($service['description']) ?>
             </p>
           </div>
-
-          <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-sm font-semibold text-sky-700">
-            <span>Buka Layanan</span>
-            <i data-lucide="arrow-up-right" class="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"></i>
-          </div>
+          <i data-lucide="arrow-up-right" class="w-4 h-4 text-slate-400 group-hover:text-[#0077B6] shrink-0 mt-1 transition-colors"></i>
         </a>
       <?php endforeach; ?>
     </div>
+  </div>
+</section>
 
-    <!-- Interactive Water Bill Calculator -->
-    <div
-      id="kalkulator"
-      class="mt-16 rounded-3xl bg-gradient-to-br from-slate-900 via-sky-950 to-slate-900 text-white p-6 sm:p-10 shadow-2xl border border-slate-800"
-    >
-      <div class="grid lg:grid-cols-12 gap-8 lg:gap-10 items-center">
-        <div class="lg:col-span-7 space-y-6">
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sky-500/20 text-sky-300 text-xs font-semibold">
-            <i data-lucide="calculator" class="w-3.5 h-3.5"></i>
-            <span>Fitur Baru <?= date('Y') ?> • Simulasi Tagihan</span>
+<!-- Clean Flat Water Bill Calculator -->
+<section id="kalkulator" class="py-16 lg:py-20 bg-[#F4F6F9] border-y border-slate-200">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6">
+    <div class="grid lg:grid-cols-12 gap-10 items-start">
+      <!-- Controls -->
+      <div class="lg:col-span-7 space-y-6">
+        <div>
+          <p class="text-xs font-semibold uppercase tracking-[0.14em] text-[#0077B6]">
+            Simulasi Tarif
+          </p>
+          <h2 class="font-display text-2xl sm:text-3xl font-bold text-[#0B2545] mt-1">
+            Estimasi Tagihan Air Bulanan
+          </h2>
+        </div>
+
+        <div>
+          <span class="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2.5">
+            Golongan Pelanggan
+          </span>
+          <div class="flex flex-wrap gap-2">
+            <?php foreach ($tariffPresets as $preset): ?>
+              <?php $isDefault = ($preset['id'] === 'rt1'); ?>
+              <button
+                type="button"
+                data-tariff-btn
+                data-rate1="<?= (int) $preset['rate1'] ?>"
+                data-rate2="<?= (int) $preset['rate2'] ?>"
+                data-rate3="<?= (int) $preset['rate3'] ?>"
+                data-admin="<?= (int) $preset['admin'] ?>"
+                class="px-4 py-2 rounded-lg text-sm font-medium transition-colors cursor-pointer <?= $isDefault ? 'bg-[#0B2545] text-white' : 'bg-white text-slate-700 hover:bg-slate-100' ?>"
+              >
+                <?= e($preset['label']) ?>
+              </button>
+            <?php endforeach; ?>
           </div>
+        </div>
 
-          <div>
-            <h3 class="font-display text-2xl sm:text-3xl font-extrabold">
-              Kalkulator Estimasi Rekening Air
-            </h3>
-            <p class="text-slate-300 text-sm sm:text-base mt-2">
-              Perkirakan biaya pemakaian air bulanan Anda berdasarkan golongan pelanggan dan
-              volume kubikasi (m³).
-            </p>
-          </div>
-
-          <div>
-            <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2.5">
-              Pilih Golongan Pelanggan
+        <div class="max-w-lg">
+          <div class="flex items-baseline justify-between mb-2">
+            <label for="cubic-range" class="text-xs font-semibold text-slate-500 uppercase tracking-wider">
+              Pemakaian Air
             </label>
-            <div class="grid sm:grid-cols-2 gap-2.5">
-              <?php foreach ($tariffPresets as $preset): ?>
-                <?php $isDefault = ($preset['id'] === 'rt1'); ?>
-                <button
-                  type="button"
-                  data-tariff-btn
-                  data-rate1="<?= (int) $preset['rate1'] ?>"
-                  data-rate2="<?= (int) $preset['rate2'] ?>"
-                  data-rate3="<?= (int) $preset['rate3'] ?>"
-                  data-admin="<?= (int) $preset['admin'] ?>"
-                  class="text-left px-4 py-3 rounded-xl text-sm font-medium border transition-all cursor-pointer <?= $isDefault ? 'bg-sky-500/20 border-sky-400 text-white shadow-sm' : 'bg-white/5 border-white/10 text-slate-300 hover:bg-white/10' ?>"
-                >
-                  <?= e($preset['label']) ?>
-                </button>
-              <?php endforeach; ?>
-            </div>
+            <span id="cubic-display" class="font-display text-2xl font-bold text-[#0B2545]">
+              20 m³
+            </span>
           </div>
-
-          <div>
-            <div class="flex items-center justify-between mb-2">
-              <label for="cubic-range" class="text-xs font-semibold uppercase tracking-wider text-slate-400">
-                Perkiraan Pemakaian Air
-              </label>
-              <span id="cubic-display" class="font-display text-xl font-extrabold text-cyan-300">
-                20 m³
-              </span>
-            </div>
-            <input
-              id="cubic-range"
-              type="range"
-              min="5"
-              max="60"
-              step="1"
-              value="20"
-              class="w-full h-2.5 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-sky-400"
-            />
-            <div class="flex justify-between text-[11px] text-slate-400 mt-1.5">
-              <span>5 m³ (Hemat)</span>
-              <span>20 m³ (Rata-rata Keluarga)</span>
-              <span>60 m³ (Tinggi)</span>
-            </div>
+          <input
+            id="cubic-range"
+            type="range"
+            min="5"
+            max="60"
+            step="1"
+            value="20"
+            class="w-full h-2 bg-slate-300 rounded-lg cursor-pointer"
+          />
+          <div class="flex justify-between text-xs text-slate-500 mt-1.5">
+            <span>5 m³</span>
+            <span>20 m³</span>
+            <span>60 m³</span>
           </div>
         </div>
+      </div>
 
-        <div class="lg:col-span-5">
-          <div class="rounded-2xl bg-white/10 border border-white/15 p-6 backdrop-blur-md space-y-4">
-            <div class="text-xs font-semibold uppercase tracking-wider text-cyan-300">
-              Estimasi Tagihan Bulanan
-            </div>
-            <div id="calc-total" class="font-display text-3xl sm:text-4xl font-extrabold text-white">
-              Rp 76.000
-            </div>
-
-            <div class="space-y-2 pt-3 border-t border-white/10 text-xs sm:text-sm text-slate-300">
-              <div class="flex justify-between">
-                <span id="calc-tier1-label">Blok I (0–10 m³: 10 m³)</span>
-                <span id="calc-tier1-cost" class="font-medium text-white">Rp 28.000</span>
-              </div>
-              <div class="flex justify-between">
-                <span id="calc-tier2-label">Blok II (11–20 m³: 10 m³)</span>
-                <span id="calc-tier2-cost" class="font-medium text-white">Rp 38.000</span>
-              </div>
-              <div class="flex justify-between">
-                <span id="calc-tier3-label">Blok III (&gt;20 m³: 0 m³)</span>
-                <span id="calc-tier3-cost" class="font-medium text-white">Rp 0</span>
-              </div>
-              <div class="flex justify-between">
-                <span>Biaya Beban / Administrasi</span>
-                <span id="calc-admin-cost" class="font-medium text-white">Rp 10.000</span>
-              </div>
-            </div>
-
-            <div class="flex items-start gap-2 pt-3 border-t border-white/10 text-[11px] text-slate-400 leading-relaxed">
-              <i data-lucide="info" class="w-4 h-4 text-sky-400 shrink-0 mt-0.5"></i>
-              <span>
-                Angka di atas adalah simulasi estimasi. Untuk tagihan resmi sesuai SK Tarif
-                Perda terbaru, silakan gunakan menu
-                <a
-                  href="http://asindotama.com/layanantirtasukapura/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="text-sky-300 underline hover:text-white"
-                >
-                  Cek Tagihan Resmi
-                </a>.
-              </span>
-            </div>
-          </div>
+      <!-- Minimal Ledger Summary (no heavy boxed clutter) -->
+      <div class="lg:col-span-5 bg-white rounded-xl p-6 sm:p-7">
+        <div class="text-xs font-semibold uppercase tracking-wider text-slate-500">
+          Perkiraan Total
         </div>
+        <div id="calc-total" class="font-display text-3xl font-extrabold text-[#0B2545] mt-1">
+          Rp 76.000
+        </div>
+
+        <dl class="mt-5 pt-4 border-t border-slate-200 space-y-2.5 text-sm">
+          <div class="flex justify-between">
+            <dt id="calc-tier1-label" class="text-slate-600">Blok I (0–10 m³)</dt>
+            <dd id="calc-tier1-cost" class="font-medium text-slate-900">Rp 28.000</dd>
+          </div>
+          <div class="flex justify-between">
+            <dt id="calc-tier2-label" class="text-slate-600">Blok II (11–20 m³)</dt>
+            <dd id="calc-tier2-cost" class="font-medium text-slate-900">Rp 38.000</dd>
+          </div>
+          <div class="flex justify-between">
+            <dt id="calc-tier3-label" class="text-slate-600">Blok III (&gt;20 m³)</dt>
+            <dd id="calc-tier3-cost" class="font-medium text-slate-900">Rp 0</dd>
+          </div>
+          <div class="flex justify-between pt-2 border-t border-slate-100">
+            <dt class="text-slate-600">Biaya Administrasi</dt>
+            <dd id="calc-admin-cost" class="font-medium text-slate-900">Rp 10.000</dd>
+          </div>
+        </dl>
+
+        <p class="mt-4 text-xs text-slate-500">
+          *Simulasi estimasi. Cek tagihan resmi di
+          <a href="http://asindotama.com/layanantirtasukapura/" target="_blank" rel="noopener noreferrer" class="text-[#0077B6] font-medium hover:underline">
+            portal tagihan
+          </a>.
+        </p>
       </div>
     </div>
   </div>

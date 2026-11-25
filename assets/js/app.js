@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // Initialize Lucide icons
   if (window.lucide) {
     window.lucide.createIcons();
   }
@@ -28,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 2. Interactive Water Bill Calculator
+  // 2. Water Bill Calculator
   const tariffButtons = document.querySelectorAll('[data-tariff-btn]');
   const cubicRange = document.getElementById('cubic-range');
   const cubicDisplay = document.getElementById('cubic-display');
@@ -48,12 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
       maximumFractionDigits: 0,
     }).format(amount);
 
-  let activeTariff = {
-    rate1: 2800,
-    rate2: 3800,
-    rate3: 5200,
-    admin: 10000,
-  };
+  let activeTariff = { rate1: 2800, rate2: 3800, rate3: 5200, admin: 10000 };
 
   const updateCalculator = () => {
     if (!cubicRange) return;
@@ -81,11 +75,11 @@ document.addEventListener('DOMContentLoaded', () => {
   tariffButtons.forEach((btn) => {
     btn.addEventListener('click', () => {
       tariffButtons.forEach((b) => {
-        b.classList.remove('bg-sky-500/20', 'border-sky-400', 'text-white', 'shadow-sm');
-        b.classList.add('bg-white/5', 'border-white/10', 'text-slate-300');
+        b.classList.remove('bg-[#0B2545]', 'text-white');
+        b.classList.add('bg-white', 'text-slate-700');
       });
-      btn.classList.add('bg-sky-500/20', 'border-sky-400', 'text-white', 'shadow-sm');
-      btn.classList.remove('bg-white/5', 'border-white/10', 'text-slate-300');
+      btn.classList.add('bg-[#0B2545]', 'text-white');
+      btn.classList.remove('bg-white', 'text-slate-700');
 
       activeTariff = {
         rate1: Number(btn.dataset.rate1),
@@ -100,7 +94,7 @@ document.addEventListener('DOMContentLoaded', () => {
   cubicRange?.addEventListener('input', updateCalculator);
   updateCalculator();
 
-  // 3. Profile & Water System Tabs
+  // 3. Profile Underline Tabs
   const tabButtons = document.querySelectorAll('[data-tab-target]');
   const tabPanels = document.querySelectorAll('[data-tab-panel]');
 
@@ -109,10 +103,10 @@ document.addEventListener('DOMContentLoaded', () => {
       const target = btn.dataset.tabTarget;
       tabButtons.forEach((b) => {
         const active = b.dataset.tabTarget === target;
-        b.classList.toggle('bg-white', active);
-        b.classList.toggle('text-sky-700', active);
-        b.classList.toggle('shadow-sm', active);
-        b.classList.toggle('text-slate-600', !active);
+        b.classList.toggle('border-[#0077B6]', active);
+        b.classList.toggle('text-[#0B2545]', active);
+        b.classList.toggle('border-transparent', !active);
+        b.classList.toggle('text-slate-500', !active);
       });
       tabPanels.forEach((panel) => {
         panel.classList.toggle('hidden', panel.dataset.tabPanel !== target);
@@ -120,7 +114,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // 4. News Category Filter
+  // 4. News Filter
   const filterBtns = document.querySelectorAll('[data-news-filter]');
   const newsCards = document.querySelectorAll('[data-news-card]');
 
@@ -129,13 +123,10 @@ document.addEventListener('DOMContentLoaded', () => {
       const cat = btn.dataset.newsFilter;
       filterBtns.forEach((b) => {
         const active = b.dataset.newsFilter === cat;
-        b.classList.toggle('bg-sky-600', active);
+        b.classList.toggle('bg-[#0B2545]', active);
         b.classList.toggle('text-white', active);
-        b.classList.toggle('shadow-sm', active);
         b.classList.toggle('bg-white', !active);
         b.classList.toggle('text-slate-600', !active);
-        b.classList.toggle('border', !active);
-        b.classList.toggle('border-slate-200', !active);
       });
       newsCards.forEach((card) => {
         const match = cat === 'Semua' || card.dataset.category === cat;
@@ -144,7 +135,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // 5. News Reader Modal
+  // 5. News Modal
   const modal = document.getElementById('news-modal');
   const modalImg = document.getElementById('news-modal-img');
   const modalCat = document.getElementById('news-modal-category');

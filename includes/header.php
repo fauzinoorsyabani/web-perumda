@@ -5,12 +5,8 @@
   <link rel="icon" type="image/x-icon" href="favicon.ico" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title><?= e($officeInfo['name']) ?> — <?= e($officeInfo['region']) ?></title>
-  <meta
-    name="description"
-    content="Portal Resmi Perumda Air Minum Tirta Sukapura Kabupaten Tasikmalaya. Cek tagihan air, pengaduan online, catat meter mandiri, pendaftaran sambungan baru, dan informasi layanan air bersih."
-  />
+  <meta name="description" content="Portal Resmi Perumda Air Minum Tirta Sukapura Kabupaten Tasikmalaya." />
 
-  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
@@ -18,141 +14,98 @@
     rel="stylesheet"
   />
 
-  <!-- Tailwind CSS v4 Browser CDN + Lucide Icons -->
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js" defer></script>
-
-  <!-- Custom Styles -->
   <link rel="stylesheet" href="assets/css/custom.css" />
 </head>
-<body class="bg-slate-50 text-slate-900 antialiased selection:bg-sky-500/20 selection:text-sky-900 min-h-screen flex flex-col">
+<body class="bg-white text-slate-900 antialiased min-h-screen flex flex-col">
 
-<header class="sticky top-0 z-50 w-full">
-  <!-- Top Utility Bar -->
-  <div class="bg-slate-950 text-slate-300 text-xs border-b border-slate-800/80">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 flex flex-wrap items-center justify-between gap-2">
-      <div class="flex flex-wrap items-center gap-x-5 gap-y-1">
-        <a
-          href="tel:<?= e($officeInfo['phone_clean']) ?>"
-          class="inline-flex items-center gap-1.5 hover:text-sky-400 transition-colors font-medium"
-        >
-          <i data-lucide="phone" class="w-3.5 h-3.5 text-sky-400"></i>
-          <span>Call Center: <?= e($officeInfo['phone']) ?></span>
-        </a>
-        <a
-          href="mailto:<?= e($officeInfo['email']) ?>"
-          class="hidden sm:inline-flex items-center gap-1.5 hover:text-sky-400 transition-colors"
-        >
-          <i data-lucide="mail" class="w-3.5 h-3.5 text-sky-400"></i>
-          <span><?= e($officeInfo['email']) ?></span>
-        </a>
-        <span class="hidden md:inline-flex items-center gap-1.5 text-slate-400">
-          <i data-lucide="clock" class="w-3.5 h-3.5 text-sky-400"></i>
-          <span><?= e($officeInfo['hours_weekday']) ?></span>
-        </span>
-      </div>
-
-      <a
-        href="<?= e($officeInfo['simpadu_url']) ?>"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="inline-flex items-center gap-1.5 text-sky-300 hover:text-white font-medium transition-colors"
-      >
-        <i data-lucide="layout-grid" class="w-3.5 h-3.5"></i>
-        <span>Launcher SIMPADU</span>
-        <i data-lucide="external-link" class="w-3 h-3"></i>
-      </a>
-    </div>
-  </div>
-
-  <!-- Main Glass Navbar -->
-  <nav class="glass-nav border-b border-slate-200/80 shadow-xs">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 flex items-center justify-between gap-4">
-      <!-- Brand -->
-      <a href="#beranda" class="flex items-center gap-3 group shrink-0">
-        <img
-          src="assets/images/logo-perumda.png"
-          alt="Logo Perumda Air Minum Tirta Sukapura"
-          class="h-11 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
-          onerror="this.style.display='none'"
-        />
-        <div class="hidden sm:block leading-tight">
-          <div class="font-display font-extrabold text-slate-900 text-sm tracking-tight">
-            PERUMDA TIRTA SUKAPURA
-          </div>
-          <div class="text-[11px] font-medium text-sky-700">
-            <?= e($officeInfo['region']) ?>
-          </div>
+<header class="sticky top-0 z-50 bg-white border-b border-slate-200">
+  <nav class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-6">
+    <!-- Brand -->
+    <a href="#beranda" class="flex items-center gap-3 shrink-0">
+      <img
+        src="assets/images/logo-perumda.png"
+        alt="Logo Perumda Tirta Sukapura"
+        class="h-9 w-auto object-contain"
+        onerror="this.style.display='none'"
+      />
+      <div class="leading-tight">
+        <div class="font-display font-bold text-[#0B2545] text-sm tracking-tight">
+          Tirta Sukapura
         </div>
-      </a>
-
-      <!-- Desktop Links -->
-      <div class="hidden lg:flex items-center gap-1">
-        <?php foreach ($navLinks as $item): ?>
-          <a
-            href="<?= e($item['href']) ?>"
-            class="px-3.5 py-2 rounded-lg text-sm font-medium text-slate-600 hover:text-sky-700 hover:bg-sky-50/80 transition-colors"
-          >
-            <?= e($item['label']) ?>
-          </a>
-        <?php endforeach; ?>
+        <div class="text-[11px] text-slate-500"><?= e($officeInfo['region']) ?></div>
       </div>
+    </a>
 
-      <!-- Desktop CTA -->
-      <div class="hidden md:flex items-center gap-2.5">
-        <a
-          href="http://asindotama.com/layanantirtasukapura/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-sky-600 hover:bg-sky-700 text-white text-sm font-semibold shadow-sm shadow-sky-600/25 transition-all hover:-translate-y-0.5"
-        >
-          <i data-lucide="droplets" class="w-4 h-4"></i>
-          <span>Cek Tagihan</span>
-        </a>
-      </div>
-
-      <!-- Mobile Hamburger -->
-      <button
-        type="button"
-        id="mobile-menu-btn"
-        class="lg:hidden p-2 rounded-xl text-slate-700 hover:bg-slate-100 transition-colors"
-        aria-label="Buka menu navigasi"
-      >
-        <i id="menu-icon-open" data-lucide="menu" class="w-6 h-6"></i>
-        <i id="menu-icon-close" data-lucide="x" class="w-6 h-6 hidden"></i>
-      </button>
-    </div>
-
-    <!-- Mobile Menu -->
-    <div id="mobile-menu" class="hidden lg:hidden border-t border-slate-200 bg-white px-4 py-4 space-y-1 shadow-lg">
+    <!-- Desktop Links -->
+    <div class="hidden md:flex items-center gap-7">
       <?php foreach ($navLinks as $item): ?>
         <a
           href="<?= e($item['href']) ?>"
-          class="block px-3.5 py-2.5 rounded-xl text-sm font-medium text-slate-700 hover:bg-sky-50 hover:text-sky-700 transition-colors"
+          class="text-sm font-medium text-slate-600 hover:text-[#0077B6] transition-colors"
         >
           <?= e($item['label']) ?>
         </a>
       <?php endforeach; ?>
-      <div class="pt-3 mt-2 border-t border-slate-100 flex flex-col gap-2">
-        <a
-          href="http://asindotama.com/layanantirtasukapura/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-sky-600 text-white text-sm font-semibold"
-        >
-          <i data-lucide="droplets" class="w-4 h-4"></i>
-          <span>Cek Tagihan Air</span>
-        </a>
-        <a
-          href="<?= e($officeInfo['simpadu_url']) ?>"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-slate-100 text-slate-800 text-sm font-semibold"
-        >
-          <i data-lucide="layout-grid" class="w-4 h-4"></i>
-          <span>Launcher SIMPADU</span>
-        </a>
-      </div>
     </div>
+
+    <!-- Desktop Actions -->
+    <div class="hidden md:flex items-center gap-4">
+      <a
+        href="<?= e($officeInfo['simpadu_url']) ?>"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="text-sm font-medium text-slate-600 hover:text-[#0B2545] transition-colors"
+      >
+        SIMPADU
+      </a>
+      <a
+        href="http://asindotama.com/layanantirtasukapura/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="px-4 py-2 rounded-lg bg-[#0077B6] hover:bg-[#005F92] text-white text-sm font-semibold transition-colors"
+      >
+        Cek Tagihan
+      </a>
+    </div>
+
+    <!-- Mobile Toggle -->
+    <button
+      type="button"
+      id="mobile-menu-btn"
+      class="md:hidden p-2 text-slate-700"
+      aria-label="Menu"
+    >
+      <i id="menu-icon-open" data-lucide="menu" class="w-5 h-5"></i>
+      <i id="menu-icon-close" data-lucide="x" class="w-5 h-5 hidden"></i>
+    </button>
   </nav>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="hidden md:hidden border-t border-slate-200 bg-white px-4 py-4 space-y-2">
+    <?php foreach ($navLinks as $item): ?>
+      <a href="<?= e($item['href']) ?>" class="block py-2 text-sm font-medium text-slate-700">
+        <?= e($item['label']) ?>
+      </a>
+    <?php endforeach; ?>
+    <div class="pt-3 border-t border-slate-200 flex gap-3">
+      <a
+        href="http://asindotama.com/layanantirtasukapura/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="flex-1 text-center py-2.5 rounded-lg bg-[#0077B6] text-white text-sm font-semibold"
+      >
+        Cek Tagihan
+      </a>
+      <a
+        href="<?= e($officeInfo['simpadu_url']) ?>"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="flex-1 text-center py-2.5 rounded-lg bg-[#F4F6F9] text-[#0B2545] text-sm font-semibold"
+      >
+        SIMPADU
+      </a>
+    </div>
+  </div>
 </header>

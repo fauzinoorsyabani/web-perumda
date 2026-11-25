@@ -1,17 +1,16 @@
 <?php
-$newsCategories = ['Semua', 'Gangguan & Perbaikan', 'Kinerja', 'Pengumuman'];
+$newsCategories = ['Semua', 'Perbaikan', 'Gangguan', 'Kinerja', 'Pengumuman'];
 ?>
-<section id="berita" class="py-20 lg:py-24 bg-slate-50">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <!-- Header + Filter -->
-    <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
-      <div class="max-w-2xl">
-        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-sky-100 text-sky-800 text-xs font-bold uppercase tracking-wider">
-          <i data-lucide="newspaper" class="w-3.5 h-3.5"></i>
-          <span>Berita &amp; Info Pelanggan</span>
-        </span>
-        <h2 class="font-display text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3 tracking-tight">
-          Kabar Terbaru &amp; Informasi Gangguan Aliran
+<section id="berita" class="py-16 lg:py-20 bg-[#F4F6F9] border-t border-slate-200">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6">
+    <!-- Header + Clean Filter Links -->
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 pb-8 border-b border-slate-200">
+      <div>
+        <p class="text-xs font-semibold uppercase tracking-[0.14em] text-[#0077B6]">
+          Informasi Pelanggan
+        </p>
+        <h2 class="font-display text-2xl sm:text-3xl font-bold text-[#0B2545] mt-1">
+          Berita &amp; Info Gangguan
         </h2>
       </div>
 
@@ -21,7 +20,7 @@ $newsCategories = ['Semua', 'Gangguan & Perbaikan', 'Kinerja', 'Pengumuman'];
           <button
             type="button"
             data-news-filter="<?= e($cat) ?>"
-            class="px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all cursor-pointer <?= $isAll ? 'bg-sky-600 text-white shadow-sm' : 'bg-white text-slate-600 border border-slate-200 hover:border-sky-300' ?>"
+            class="px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors cursor-pointer <?= $isAll ? 'bg-[#0B2545] text-white' : 'bg-white text-slate-600 hover:text-[#0B2545]' ?>"
           >
             <?= e($cat) ?>
           </button>
@@ -29,8 +28,8 @@ $newsCategories = ['Semua', 'Gangguan & Perbaikan', 'Kinerja', 'Pengumuman'];
       </div>
     </div>
 
-    <!-- Cards Grid -->
-    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+    <!-- Clean Editorial Grid (borderless, image-first, minimal text) -->
+    <div class="mt-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-7">
       <?php foreach ($newsItems as $item): ?>
         <?php
         $jsonPayload = htmlspecialchars(
@@ -43,74 +42,53 @@ $newsCategories = ['Semua', 'Gangguan & Perbaikan', 'Kinerja', 'Pengumuman'];
           data-news-card
           data-category="<?= e($item['category']) ?>"
           data-news-json="<?= $jsonPayload ?>"
-          class="group cursor-pointer rounded-3xl bg-white border border-slate-200/80 overflow-hidden shadow-xs hover:shadow-xl hover:border-sky-300 transition-all duration-300 flex flex-col"
+          class="group cursor-pointer flex flex-col"
         >
-          <div class="relative h-44 bg-gradient-to-br from-sky-900 to-slate-900 overflow-hidden">
+          <div class="aspect-[16/10] rounded-lg overflow-hidden bg-slate-200">
             <img
               src="<?= e($item['image']) ?>"
               alt="<?= e($item['title']) ?>"
               loading="lazy"
-              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
               onerror="this.style.display='none'"
             />
-            <div class="absolute top-3 left-3 flex items-center gap-1.5">
-              <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[11px] font-bold backdrop-blur-md <?= !empty($item['urgent']) ? 'bg-amber-500 text-slate-950' : 'bg-slate-900/75 text-white' ?>">
-                <?php if (!empty($item['urgent'])): ?>
-                  <i data-lucide="alert-triangle" class="w-3 h-3"></i>
-                <?php endif; ?>
-                <?= e($item['category']) ?>
-              </span>
-            </div>
           </div>
 
-          <div class="p-5 flex-1 flex flex-col justify-between">
-            <div>
-              <div class="flex items-center gap-3 text-xs text-slate-500 mb-2">
-                <span><?= e($item['date']) ?></span>
-                <span>•</span>
-                <span class="inline-flex items-center gap-1">
-                  <i data-lucide="clock" class="w-3 h-3"></i>
-                  <?= e($item['readTime']) ?>
-                </span>
-              </div>
-              <h3 class="font-display font-bold text-slate-900 text-base leading-snug group-hover:text-sky-700 transition-colors line-clamp-3">
-                <?= e($item['title']) ?>
-              </h3>
-              <p class="text-xs sm:text-sm text-slate-600 mt-2.5 line-clamp-3 leading-relaxed">
-                <?= e($item['excerpt']) ?>
-              </p>
+          <div class="mt-3.5 space-y-1.5">
+            <div class="text-xs font-semibold text-[#0077B6]">
+              <?= e($item['category']) ?>
             </div>
-
-            <div class="mt-4 pt-3 border-t border-slate-100 inline-flex items-center gap-1.5 text-xs font-bold text-sky-700">
-              <span>Baca Selengkapnya</span>
-              <i data-lucide="arrow-right" class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform"></i>
+            <h3 class="font-display font-bold text-[#0B2545] text-sm sm:text-base leading-snug group-hover:text-[#0077B6] transition-colors line-clamp-3">
+              <?= e($item['title']) ?>
+            </h3>
+            <div class="text-xs text-slate-500 pt-0.5">
+              <?= e($item['date']) ?>
             </div>
           </div>
         </article>
       <?php endforeach; ?>
     </div>
 
-    <!-- All News External Button -->
-    <div class="mt-10 text-center">
+    <div class="mt-10 pt-6 border-t border-slate-200 flex justify-end">
       <a
         href="<?= e($officeInfo['old_site_base']) ?>/berita"
         target="_blank"
         rel="noopener noreferrer"
-        class="inline-flex items-center gap-2 px-6 py-3 rounded-2xl bg-white border border-slate-200 hover:border-sky-300 text-slate-800 hover:text-sky-700 font-semibold text-sm shadow-xs transition-all"
+        class="inline-flex items-center gap-1.5 text-sm font-semibold text-[#0077B6] hover:underline"
       >
-        <span>Lihat Arsip Semua Berita</span>
-        <i data-lucide="external-link" class="w-4 h-4"></i>
+        <span>Lihat Semua Berita</span>
+        <i data-lucide="arrow-right" class="w-4 h-4"></i>
       </a>
     </div>
   </div>
 
-  <!-- Article Reader Modal -->
+  <!-- Minimal Reader Modal -->
   <div
     id="news-modal"
-    class="hidden fixed inset-0 z-50 bg-slate-950/70 backdrop-blur-sm flex items-center justify-center p-4"
+    class="hidden fixed inset-0 z-50 bg-slate-950/60 flex items-center justify-center p-4"
   >
-    <div class="bg-white rounded-3xl max-w-2xl w-full max-h-[85vh] overflow-y-auto shadow-2xl border border-slate-200">
-      <div class="relative h-56 bg-slate-900">
+    <div class="bg-white rounded-xl max-w-xl w-full max-h-[85vh] overflow-y-auto shadow-xl">
+      <div class="relative aspect-[16/9] bg-slate-200">
         <img
           id="news-modal-img"
           src=""
@@ -121,31 +99,31 @@ $newsCategories = ['Semua', 'Gangguan & Perbaikan', 'Kinerja', 'Pengumuman'];
         <button
           type="button"
           data-close-modal
-          class="absolute top-4 right-4 w-9 h-9 rounded-full bg-slate-900/75 hover:bg-slate-900 text-white flex items-center justify-center transition-colors cursor-pointer"
-          aria-label="Tutup berita"
+          class="absolute top-3 right-3 w-8 h-8 rounded-lg bg-[#0B2545] text-white flex items-center justify-center cursor-pointer"
+          aria-label="Tutup"
         >
-          <i data-lucide="x" class="w-5 h-5"></i>
+          <i data-lucide="x" class="w-4 h-4"></i>
         </button>
       </div>
-      <div class="p-6 sm:p-8 space-y-4">
-        <span id="news-modal-category" class="inline-block px-3 py-1 rounded-full bg-sky-100 text-sky-800 text-xs font-bold"></span>
-        <h3 id="news-modal-title" class="font-display text-2xl font-extrabold text-slate-900 leading-snug"></h3>
-        <div id="news-modal-body" class="space-y-3 text-sm sm:text-base text-slate-600 leading-relaxed"></div>
-        <div class="pt-4 border-t border-slate-100 flex flex-wrap items-center justify-between gap-3">
+      <div class="p-6 space-y-3">
+        <div id="news-modal-category" class="text-xs font-semibold uppercase tracking-wider text-[#0077B6]"></div>
+        <h3 id="news-modal-title" class="font-display text-xl font-bold text-[#0B2545] leading-snug"></h3>
+        <div id="news-modal-body" class="space-y-3 text-sm text-slate-600 leading-relaxed pt-1"></div>
+        <div class="pt-4 border-t border-slate-200 flex items-center justify-between">
           <a
             id="news-modal-link"
             href="#"
             target="_blank"
             rel="noopener noreferrer"
-            class="inline-flex items-center gap-2 text-sm font-semibold text-sky-700 hover:text-sky-800"
+            class="inline-flex items-center gap-1.5 text-sm font-semibold text-[#0077B6] hover:underline"
           >
-            <span>Buka di Portal Asli</span>
-            <i data-lucide="external-link" class="w-4 h-4"></i>
+            <span>Buka Portal Asli</span>
+            <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
           </a>
           <button
             type="button"
             data-close-modal
-            class="px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 text-sm font-semibold cursor-pointer"
+            class="px-3.5 py-1.5 rounded-lg bg-[#F4F6F9] hover:bg-slate-200 text-slate-700 text-sm font-medium cursor-pointer"
           >
             Tutup
           </button>
