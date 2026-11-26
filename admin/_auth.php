@@ -79,9 +79,12 @@ function renderAdminHeader(string $title, string $activeNav, array $admin): void
 {
     $flash = getFlash();
     $navItems = [
-        ['id' => 'dashboard', 'label' => 'Dashboard',       'href' => 'index.php',  'icon' => 'layout-dashboard'],
-        ['id' => 'berita',    'label' => 'Berita & Info',   'href' => 'berita.php', 'icon' => 'newspaper'],
-        ['id' => 'pesan',     'label' => 'Pesan Pelanggan', 'href' => 'pesan.php',  'icon' => 'inbox'],
+        ['id' => 'dashboard', 'label' => 'Dashboard',       'href' => 'index.php',      'icon' => 'layout-dashboard'],
+        ['id' => 'berita',    'label' => 'Berita',          'href' => 'berita.php',     'icon' => 'newspaper'],
+        ['id' => 'pesan',     'label' => 'Pesan',           'href' => 'pesan.php',      'icon' => 'inbox'],
+        ['id' => 'cabang',    'label' => 'Cabang',          'href' => 'cabang.php',     'icon' => 'building-2'],
+        ['id' => 'sumber',    'label' => 'Sumber Air',      'href' => 'sumber-air.php', 'icon' => 'droplets'],
+        ['id' => 'akun',      'label' => 'Akun',            'href' => 'akun.php',       'icon' => 'shield'],
     ];
     ?>
 <!doctype html>

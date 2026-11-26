@@ -1,10 +1,15 @@
 DirectoryIndex index.php
 
+# Blokir akses HTTP langsung ke file sensitif (.env, .git, .sql)
+<FilesMatch "(^\.env|^\.git|\.sql$)">
+  Require all denied
+</FilesMatch>
+
 <IfModule mod_rewrite.c>
   RewriteEngine On
 
-  # Blokir akses HTTP langsung ke folder internal & sensitif
-  RewriteRule ^(config|includes|database|docs)/ - [F,L]
+  # Blokir akses HTTP langsung ke folder internal
+  RewriteRule ^(config|includes|database|docs|scripts|backups)/ - [F,L]
 
   # Clean URL opsional (contoh: /layanan -> layanan.php)
   RewriteCond %{REQUEST_FILENAME} !-d
