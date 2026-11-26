@@ -508,3 +508,12 @@ function findNewsBySlug(string $slug, array $items): ?array
     }
     return null;
 }
+
+// Muat data live dari MySQL (PDO Prepared Statements) dengan fallback aman ke array statis
+if (!defined('PERUMDA_SKIP_DB_LOAD')) {
+    require_once __DIR__ . '/repository.php';
+    $newsItems     = repoFetchNews($newsItems);
+    $branches      = repoFetchBranches($branches);
+    $waterSources  = repoFetchWaterSources($waterSources);
+    $coverageStats = repoFetchCoverageStats($coverageStats);
+}

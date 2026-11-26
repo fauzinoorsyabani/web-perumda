@@ -3,8 +3,8 @@ DirectoryIndex index.php
 <IfModule mod_rewrite.c>
   RewriteEngine On
 
-  # Proteksi folder internal
-  RewriteRule ^(config|includes)/ - [F,L]
+  # Blokir akses HTTP langsung ke folder internal & sensitif
+  RewriteRule ^(config|includes|database|docs)/ - [F,L]
 
   # Clean URL opsional (contoh: /layanan -> layanan.php)
   RewriteCond %{REQUEST_FILENAME} !-d
@@ -12,7 +12,7 @@ DirectoryIndex index.php
   RewriteRule ^([a-zA-Z0-9_-]+)/?$ $1.php [L,QSA]
 </IfModule>
 
-# Header Keamanan & Performa SEO
+# Header Keamanan Dasar
 <IfModule mod_headers.c>
   Header set X-Content-Type-Options "nosniff"
   Header set X-Frame-Options "SAMEORIGIN"

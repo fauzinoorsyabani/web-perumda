@@ -193,33 +193,75 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 8. Contact Form -> WhatsApp (kontak.php)
+  // 8. Contact Form -> Save to MySQL (PDO + CSRF) & prepare WhatsApp link
   const contactForm = document.getElementById('contact-form');
   const contactFeedback = document.getElementById('contact-feedback');
+  const submitBtn = document.getElementById('cf-submit-btn');
+  const waLink = document.getElementById('cf-wa-link');
+
   if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
+    contactForm.addEventListener('submit', async (e) => {
       e.preventDefault();
       const waPhone = contactForm.dataset.waPhone || '6282129102345';
-      const name = document.getElementById('cf-name')?.value.trim() || '';
-      const nosam = document.getElementById('cf-nosam')?.value.trim() || '-';
-      const topic = document.getElementById('cf-topic')?.value || '';
-      const area = document.getElementById('cf-area')?.value.trim() || '';
-      const message = document.getElementById('cf-message')?.value.trim() || '';
+      const payload = {
+        csrf_token: document.getElementById('cf-csrf')?.value || '',
+        name: document.getElementById('cf-name')?.value.trim() || '',
+        nosam: document.getElementById('cf-nosam')?.value.trim() || '',
+        topic: document.getElementById('cf-topic')?.value || '',
+        branch_id: document.getElementById('cf-branch')?.value || null,
+        area: document.getElementById('cf-area')?.value.trim() || '',
+        message: document.getElementById('cf-message')?.value.trim() || '',
+      };
 
-      const text =
-        `Halo Perumda Air Minum Tirta Sukapura,%0A%0A` +
-        `Nama: ${encodeURIComponent(name)}%0A` +
-        `No. Sambungan: ${encodeURIComponent(nosam)}%0A` +
-        `Keperluan: ${encodeURIComponent(topic)}%0A` +
-        `Wilayah: ${encodeURIComponent(area)}%0A%0A` +
-        `Pesan:%0A${encodeURIComponent(message)}`;
+      const showFeedback = (msg, isError) => {
+        if (!contactFeedback) return;
+        contactFeedback.textContent = msg;
+        contactFeedback.classList.remove(
+          'hidden',
+          'bg-[#F0FDFA]', 'border', 'border-[#1E6F5C]/30', 'text-[#1E6F5C]',
+          'bg-red-50', 'border-red-200', 'text-red-800'
+        );
+        if (isError) {
+          contactFeedback.classList.add('bg-red-50', 'border', 'border-red-200', 'text-red-800');
+        } else {
+          contactFeedback.classList.add('bg-[#F0FDFA]', 'border', 'border-[#1E6F5C]/30', 'text-[#1E6F5C]');
+        }
+      };
 
-      if (contactFeedback) {
-        contactFeedback.textContent = 'Pesan siap. Membuka WhatsApp Call Center Tirta Sukapura...';
-        contactFeedback.classList.remove('hidden');
+      if (submitBtn) submitBtn.disabled = true;
+
+      try {
+        const res = await fetch('api/contact-submit.php', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+        });
+        const data = await res.json();
+
+        if (!res.ok || !data.ok) {
+          showFeedback(data.error || 'Gagal menyimpan pesan. Coba lagi.', true);
+          return;
+        }
+
+        showFeedback(data.message, false);
+
+        if (waLink) {
+          const waText =
+            `Halo Perumda Tirta Sukapura (${data.ticket}),%0A` +
+            `Nama: ${encodeURIComponent(payload.name)}%0A` +
+            `No. Sambungan: ${encodeURIComponent(payload.nosam || '-')}%0A` +
+            `Keperluan: ${encodeURIComponent(payload.topic)}%0A` +
+            `Wilayah: ${encodeURIComponent(payload.area)}%0A%0A` +
+            `${encodeURIComponent(payload.message)}`;
+          waLink.href = `https://wa.me/${waPhone}?text=${waText}`;
+        }
+
+        contactForm.reset();
+      } catch {
+        showFeedback('Koneksi terganggu. Anda bisa langsung menghubungi WhatsApp Call Center.', true);
+      } finally {
+        if (submitBtn) submitBtn.disabled = false;
       }
-
-      window.open(`https://wa.me/${waPhone}?text=${text}`, '_blank', 'noopener,noreferrer');
     });
   }
 

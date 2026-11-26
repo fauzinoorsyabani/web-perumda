@@ -1,6 +1,14 @@
 <?php
 declare(strict_types=1);
 
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+if (empty($_SESSION['csrf_token'])) {
+    $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+}
+$csrfToken = (string) $_SESSION['csrf_token'];
+
 require_once __DIR__ . '/config/data.php';
 require_once __DIR__ . '/config/seo.php';
 
@@ -94,13 +102,14 @@ require_once __DIR__ . '/includes/header.php';
         <div class="lg:col-span-7 reveal reveal-delay-1">
           <div class="bg-white border border-[#DCE1E5] rounded-md p-6 sm:p-8">
             <h2 class="font-display text-2xl font-extrabold text-[#102A43]">
-              Kirim Pesan ke Call Center
+              Kirim Pesan ke Layanan Pelanggan
             </h2>
             <p class="text-sm text-[#52606D] mt-1.5">
-              Setelah dikirim, isi formulir akan langsung terbuka di chat WhatsApp resmi <?= e($officeInfo['phone']) ?>.
+              Pesan Anda dicatat langsung ke database sistem kami dengan nomor tiket, dan dapat dilanjutkan lewat WhatsApp resmi <?= e($officeInfo['phone']) ?>.
             </p>
 
             <form id="contact-form" data-wa-phone="<?= e($officeInfo['phone_clean']) ?>" class="mt-6 space-y-4">
+              <input type="hidden" id="cf-csrf" value="<?= e($csrfToken) ?>" />
               <div class="grid sm:grid-cols-2 gap-4">
                 <div>
                   <label for="cf-name" class="block text-xs font-bold text-[#102A43] mb-1.5">Nama Lengkap *</label>
@@ -124,33 +133,47 @@ require_once __DIR__ . '/includes/header.php';
                   </select>
                 </div>
                 <div>
-                  <label for="cf-area" class="block text-xs font-bold text-[#102A43] mb-1.5">Kecamatan / Wilayah *</label>
-                  <input id="cf-area" type="text" required placeholder="Contoh: Singaparna / Tawang" class="w-full px-3.5 py-2.5 rounded-md border border-[#DCE1E5] text-sm focus:outline-none focus:border-[#005A8D]" />
+                  <label for="cf-branch" class="block text-xs font-bold text-[#102A43] mb-1.5">Cabang / Unit Terkait (opsional)</label>
+                  <select id="cf-branch" class="w-full px-3.5 py-2.5 rounded-md border border-[#DCE1E5] text-sm bg-white focus:outline-none focus:border-[#005A8D]">
+                    <option value="">Kantor Pusat / Umum</option>
+                    <?php foreach ($branches as $b): ?>
+                      <?php if (isset($b['id'])): ?>
+                        <option value="<?= (int) $b['id'] ?>"><?= e($b['name']) ?> (<?= e($b['area']) ?>)</option>
+                      <?php endif; ?>
+                    <?php endforeach; ?>
+                  </select>
                 </div>
               </div>
 
               <div>
-                <label for="cf-message" class="block text-xs font-bold text-[#102A43] mb-1.5">Pesan *</label>
-                <textarea id="cf-message" rows="4" required placeholder="Jelaskan pertanyaan atau kondisi aliran di rumah Anda..." class="w-full px-3.5 py-2.5 rounded-md border border-[#DCE1E5] text-sm focus:outline-none focus:border-[#005A8D]"></textarea>
+                <label for="cf-area" class="block text-xs font-bold text-[#102A43] mb-1.5">Kecamatan / Alamat Singkat *</label>
+                <input id="cf-area" type="text" required placeholder="Contoh: Singaparna / Tawang" class="w-full px-3.5 py-2.5 rounded-md border border-[#DCE1E5] text-sm focus:outline-none focus:border-[#005A8D]" />
               </div>
 
-              <div id="contact-feedback" class="hidden rounded-md bg-[#F0FDFA] border border-[#1E6F5C]/30 p-3 text-sm text-[#1E6F5C] font-medium"></div>
+              <div>
+                <label for="cf-message" class="block text-xs font-bold text-[#102A43] mb-1.5">Pesan *</label>
+                <textarea id="cf-message" rows="4" required minlength="8" placeholder="Jelaskan pertanyaan atau kondisi aliran di rumah Anda..." class="w-full px-3.5 py-2.5 rounded-md border border-[#DCE1E5] text-sm focus:outline-none focus:border-[#005A8D]"></textarea>
+              </div>
+
+              <div id="contact-feedback" class="hidden rounded-md p-3.5 text-sm font-medium"></div>
 
               <div class="flex flex-wrap items-center gap-3 pt-2">
                 <button
                   type="submit"
+                  id="cf-submit-btn"
                   class="inline-flex items-center gap-2 px-5 py-2.5 rounded-md bg-[#005A8D] hover:bg-[#00446B] text-white font-bold text-sm transition-colors cursor-pointer"
                 >
                   <i data-lucide="send" class="w-4 h-4"></i>
-                  <span>Kirim lewat WhatsApp</span>
+                  <span>Kirim Pesan</span>
                 </button>
                 <a
-                  href="<?= e($officeInfo['complaint_url']) ?>"
+                  id="cf-wa-link"
+                  href="https://wa.me/<?= e($officeInfo['phone_clean']) ?>"
                   target="_blank"
                   rel="noopener noreferrer"
                   class="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-md bg-[#EFEFE9] hover:bg-[#DCE1E5] text-[#102A43] font-bold text-sm transition-colors"
                 >
-                  <span>Tiket Pengaduan Online</span>
+                  <span>Chat WhatsApp Langsung</span>
                   <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
                 </a>
               </div>
