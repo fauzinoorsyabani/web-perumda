@@ -1,0 +1,5 @@
+# Blokir listing folder & seluruh eksekusi script di folder uploads (Anti Web-Shell)
+Options -Indexes
+<FilesMatch "\.(php|phtml|php3|php4|php5|php7|php8|phar|cgi|pl|py|sh|exe)$">
+  Require all denied
+</FilesMatch>

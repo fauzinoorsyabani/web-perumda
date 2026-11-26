@@ -1,6 +1,10 @@
 User-agent: *
 Allow: /
+Disallow: /admin/
+Disallow: /api/
 Disallow: /config/
+Disallow: /database/
+Disallow: /docs/
 Disallow: /includes/
 
 # Explicit support for AI Answer & Generative Engines (AEO / GEO)

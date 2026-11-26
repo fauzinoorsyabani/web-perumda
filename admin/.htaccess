@@ -1,0 +1,4 @@
+# Blokir akses langsung ke helper internal admin (_auth.php, _upload.php)
+<FilesMatch "^_">
+  Require all denied
+</FilesMatch>
