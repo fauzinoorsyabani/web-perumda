@@ -1,15 +1,12 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // Initialize Lucide icons
   if (window.lucide) {
     window.lucide.createIcons();
   }
 
-  // 1. Sticky Header Scroll State
+  // 1. Sticky Header Elevation
   const siteHeader = document.getElementById('site-header');
   if (siteHeader) {
-    const onScroll = () => {
-      siteHeader.classList.toggle('is-scrolled', window.scrollY > 12);
-    };
+    const onScroll = () => siteHeader.classList.toggle('is-scrolled', window.scrollY > 12);
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();
   }
@@ -29,10 +26,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 3. Scroll-Triggered Reveal Choreography
+  // 3. Subtle Editorial Scroll Reveals
   const revealEls = document.querySelectorAll('.reveal');
   if (revealEls.length > 0 && 'IntersectionObserver' in window) {
-    const revealObserver = new IntersectionObserver(
+    const observer = new IntersectionObserver(
       (entries, obs) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
@@ -41,48 +38,14 @@ document.addEventListener('DOMContentLoaded', () => {
           }
         });
       },
-      { threshold: 0.1, rootMargin: '0px 0px -30px 0px' }
+      { threshold: 0.08, rootMargin: '0px 0px -24px 0px' }
     );
-    revealEls.forEach((el) => revealObserver.observe(el));
+    revealEls.forEach((el) => observer.observe(el));
   } else {
     revealEls.forEach((el) => el.classList.add('is-visible'));
   }
 
-  // 4. Smooth Animated Counters (Hero Stats)
-  const counters = document.querySelectorAll('[data-counter]');
-  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  if (counters.length > 0 && !prefersReduced && 'IntersectionObserver' in window) {
-    const countObserver = new IntersectionObserver(
-      (entries, obs) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) return;
-          const el = entry.target;
-          const target = Number(el.dataset.counter || 0);
-          const duration = 900;
-          const start = performance.now();
-
-          const step = (now) => {
-            const progress = Math.min((now - start) / duration, 1);
-            const eased = 1 - Math.pow(1 - progress, 3);
-            el.textContent = String(Math.round(target * eased));
-            if (progress < 1) {
-              requestAnimationFrame(step);
-            } else {
-              el.textContent = String(target);
-            }
-          };
-
-          requestAnimationFrame(step);
-          obs.unobserve(el);
-        });
-      },
-      { threshold: 0.35 }
-    );
-    counters.forEach((el) => countObserver.observe(el));
-  }
-
-  // 5. FAQ Smooth Accordions
+  // 4. FAQ Accordion
   document.querySelectorAll('[data-faq-toggle]').forEach((btn) => {
     btn.addEventListener('click', () => {
       const item = btn.closest('.faq-item');
@@ -92,7 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // 6. Tariff Simulator (layanan.php)
+  // 5. Tariff Simulator (layanan.php)
   const tariffButtons = document.querySelectorAll('[data-tariff-btn]');
   const cubicRange = document.getElementById('cubic-range');
   if (cubicRange) {
@@ -128,9 +91,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if (cubicDisplay) cubicDisplay.textContent = `${m3} m³`;
       if (totalDisplay) totalDisplay.textContent = formatRupiah(total);
-      if (tier1Label) tier1Label.textContent = `Blok I (0–10 m³: ${t1} m³)`;
+      if (tier1Label) tier1Label.textContent = `Blok I (0-10 m³: ${t1} m³)`;
       if (tier1Cost) tier1Cost.textContent = formatRupiah(c1);
-      if (tier2Label) tier2Label.textContent = `Blok II (11–20 m³: ${t2} m³)`;
+      if (tier2Label) tier2Label.textContent = `Blok II (11-20 m³: ${t2} m³)`;
       if (tier2Cost) tier2Cost.textContent = formatRupiah(c2);
       if (tier3Label) tier3Label.textContent = `Blok III (>20 m³: ${t3} m³)`;
       if (tier3Cost) tier3Cost.textContent = formatRupiah(c3);
@@ -140,11 +103,11 @@ document.addEventListener('DOMContentLoaded', () => {
     tariffButtons.forEach((btn) => {
       btn.addEventListener('click', () => {
         tariffButtons.forEach((b) => {
-          b.classList.remove('bg-[#0B2545]', 'text-white');
-          b.classList.add('bg-white', 'text-slate-700', 'border', 'border-slate-200');
+          b.classList.remove('bg-[#102A43]', 'text-white');
+          b.classList.add('bg-[#F7F7F5]', 'text-[#1C242B]', 'border', 'border-[#DCE1E5]');
         });
-        btn.classList.add('bg-[#0B2545]', 'text-white');
-        btn.classList.remove('bg-white', 'text-slate-700', 'border', 'border-slate-200');
+        btn.classList.add('bg-[#102A43]', 'text-white');
+        btn.classList.remove('bg-[#F7F7F5]', 'text-[#1C242B]', 'border', 'border-[#DCE1E5]');
         activeTariff = {
           rate1: Number(btn.dataset.rate1),
           rate2: Number(btn.dataset.rate2),
@@ -159,7 +122,7 @@ document.addEventListener('DOMContentLoaded', () => {
     updateCalc();
   }
 
-  // 7. News Filter & Live Search (berita.php)
+  // 6. News Filter & Search (berita.php)
   const filterBtns = document.querySelectorAll('[data-news-filter]');
   const newsCards = document.querySelectorAll('[data-news-card]');
   const newsSearch = document.getElementById('news-search');
@@ -181,7 +144,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (show) visible++;
       });
 
-      if (newsCount) newsCount.textContent = `Menampilkan ${visible} artikel`;
+      if (newsCount) newsCount.textContent = `Menampilkan ${visible} tulisan`;
       if (newsEmpty) newsEmpty.classList.toggle('hidden', visible > 0);
     };
 
@@ -190,12 +153,12 @@ document.addEventListener('DOMContentLoaded', () => {
         activeCategory = btn.dataset.newsFilter || 'Semua';
         filterBtns.forEach((b) => {
           const active = b.dataset.newsFilter === activeCategory;
-          b.classList.toggle('bg-[#0B2545]', active);
+          b.classList.toggle('bg-[#102A43]', active);
           b.classList.toggle('text-white', active);
           b.classList.toggle('bg-white', !active);
-          b.classList.toggle('text-slate-600', !active);
+          b.classList.toggle('text-[#52606D]', !active);
           b.classList.toggle('border', !active);
-          b.classList.toggle('border-slate-200', !active);
+          b.classList.toggle('border-[#DCE1E5]', !active);
         });
         applyNewsFilter();
       });
@@ -205,7 +168,7 @@ document.addEventListener('DOMContentLoaded', () => {
     applyNewsFilter();
   }
 
-  // 8. Branch Area Filter (kontak.php)
+  // 7. Branch Filter (kontak.php)
   const branchBtns = document.querySelectorAll('[data-branch-filter]');
   const branchCards = document.querySelectorAll('[data-branch-card]');
 
@@ -215,10 +178,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const area = btn.dataset.branchFilter || 'Semua';
         branchBtns.forEach((b) => {
           const active = b.dataset.branchFilter === area;
-          b.classList.toggle('bg-[#0B2545]', active);
+          b.classList.toggle('bg-[#102A43]', active);
           b.classList.toggle('text-white', active);
-          b.classList.toggle('bg-[#EFF4F8]', !active);
-          b.classList.toggle('text-slate-700', !active);
+          b.classList.toggle('bg-[#F7F7F5]', !active);
+          b.classList.toggle('text-[#52606D]', !active);
+          b.classList.toggle('border', !active);
+          b.classList.toggle('border-[#DCE1E5]', !active);
         });
         branchCards.forEach((card) => {
           const match = area === 'Semua' || card.dataset.area === area;
@@ -228,7 +193,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 9. Contact Form -> WhatsApp Call Center (kontak.php)
+  // 8. Contact Form -> WhatsApp (kontak.php)
   const contactForm = document.getElementById('contact-form');
   const contactFeedback = document.getElementById('contact-feedback');
   if (contactForm) {
@@ -242,7 +207,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const message = document.getElementById('cf-message')?.value.trim() || '';
 
       const text =
-        `Halo Call Center Perumda Air Minum Tirta Sukapura,%0A%0A` +
+        `Halo Perumda Air Minum Tirta Sukapura,%0A%0A` +
         `Nama: ${encodeURIComponent(name)}%0A` +
         `No. Sambungan: ${encodeURIComponent(nosam)}%0A` +
         `Keperluan: ${encodeURIComponent(topic)}%0A` +
@@ -250,7 +215,7 @@ document.addEventListener('DOMContentLoaded', () => {
         `Pesan:%0A${encodeURIComponent(message)}`;
 
       if (contactFeedback) {
-        contactFeedback.textContent = 'Pesan disiapkan! Mengarahkan ke WhatsApp Call Center resmi Tirta Sukapura...';
+        contactFeedback.textContent = 'Pesan siap. Membuka WhatsApp Call Center Tirta Sukapura...';
         contactFeedback.classList.remove('hidden');
       }
 
@@ -258,7 +223,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 10. Copy Article Link (berita-detail.php)
+  // 9. Copy Article Link (berita-detail.php)
   const copyBtn = document.getElementById('copy-link-btn');
   if (copyBtn) {
     copyBtn.addEventListener('click', async () => {
@@ -267,13 +232,13 @@ document.addEventListener('DOMContentLoaded', () => {
         const span = copyBtn.querySelector('span');
         if (span) {
           const prev = span.textContent;
-          span.textContent = 'Tautan Tersalin!';
+          span.textContent = 'Tautan tersalin';
           setTimeout(() => {
             span.textContent = prev;
           }, 2200);
         }
       } catch {
-        // Fallback ignored gracefully
+        // Ignore clipboard denial
       }
     });
   }
