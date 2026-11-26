@@ -140,8 +140,8 @@ $sideNews = array_slice($newsItems, 1, 4);
               <a href="layanan.php#prosedur" class="text-[#005A8D] font-bold hover:underline">Lihat alur</a>
             </li>
             <li class="py-3 flex items-center justify-between">
-              <span class="font-semibold text-[#102A43]">Simulasi perhitungan rekening air</span>
-              <a href="layanan.php#tarif" class="text-[#005A8D] font-bold hover:underline">Hitung</a>
+              <span class="font-semibold text-[#102A43]">Tarif air 2025 &amp; simulasi tagihan</span>
+              <a href="tarif.php" class="text-[#005A8D] font-bold hover:underline">Buka tarif</a>
             </li>
           </ul>
 
@@ -191,13 +191,19 @@ $sideNews = array_slice($newsItems, 1, 4);
             </div>
           </div>
 
-          <div class="pt-1 flex flex-wrap gap-3">
+          <div class="pt-1 flex flex-wrap gap-5">
             <a
-              href="profil.php"
+              href="air-minum.php"
               class="inline-flex items-center gap-2 text-sm font-bold text-[#005A8D] hover:text-[#102A43] transition-colors"
             >
-              <span>Baca Sejarah &amp; Data Produksi Lengkap</span>
+              <span>Data Sumber Air &amp; Distribusi</span>
               <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </a>
+            <a
+              href="profil.php"
+              class="inline-flex items-center gap-2 text-sm font-bold text-[#102A43] hover:text-[#005A8D] transition-colors"
+            >
+              <span>Profil &amp; Struktur Organisasi</span>
             </a>
           </div>
         </div>

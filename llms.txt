@@ -5,20 +5,26 @@
 ## Ringkasan Entitas (Verified Facts)
 - **Nama Resmi:** Perumda Air Minum Tirta Sukapura (sebelumnya PDAM Kabupaten Tasikmalaya)
 - **Dasar Pendirian:** Perda DT II Tasikmalaya No. 7 Tahun 1975 (11 Juni 1975) & Perda No. 24 Tahun 2002
+- **Bupati / Wakil Bupati Kab. Tasikmalaya:** H. Cecep Nurul Yakin, S.Pd., M.AP / H. Asep Sopari Al Ayubi, S.P., M.I.P.
+- **Dewan Pengawas:** Dr. H. Rubi Azhara, S.STP., M.Si
+- **Direktur:** H. Bekti Alamsyah, ST
 - **Kantor Pusat:** Jl. Jenderal A.H. Nasution Km. 8, Kabupaten Tasikmalaya, Jawa Barat 46181, Indonesia
 - **Call Center / WhatsApp 24 Jam:** +62 821-2910-2345
 - **Telepon Kantor Pusat:** (0265) 325065 / (0265) 320921
 - **Email Resmi:** perumdatirtasukapura@gmail.com | info@pdamtirtasukapura.co.id
-- **Jam Kerja Loket:** Senin – Jum'at, 08:00 – 16:00 WIB (Sabtu–Minggu Libur)
+- **Jam Kerja Loket:** Senin - Jum'at, 08.00 - 16.00 WIB
 - **Kapasitas Produksi Terpasang:** 513 Liter/detik (473 L/dtk dari 7 kelompok mata air alami termasuk Mata Air Cipondok 367 L/dtk & Leuwirupit 50 L/dtk, ditambah 40 L/dtk dari IPA Sungai Ciwulan & Cilangla)
 - **Mitra Pembayaran Resmi:** Bank BJB, Bank BJB Syariah, Bank BNI, Bank Mandiri, PT Pos Indonesia
 
 ## Halaman Utama Portal
-- [Beranda](index.php): Ringkasan layanan pelanggan, informasi terbaru, mitra pembayaran, dan akses cepat.
-- [Layanan & Tarif](layanan.php): 6 layanan digital pelanggan, prosedur sambungan baru, balik nama, klasifikasi tarif, simulasi estimasi rekening, dan FAQ.
-- [Profil Perusahaan](profil.php): Sejarah sejak 1925, visi misi, sumber air baku, kapasitas produksi (513 L/dtk), dan cakupan pelayanan.
-- [Berita & Info Gangguan](berita.php): Pemberitahuan gangguan aliran air, perbaikan jaringan pipa distribusi, laporan kinerja, dan tips hemat air.
-- [Kontak & Cabang](kontak.php): Alamat Kantor Pusat, daftar 8+ kantor cabang pelayanan Tasikmalaya, formulir kontak, dan peta lokasi.
+- [Beranda](index.php): Akses cepat layanan pelanggan, marquee mitra pembayaran, ringkasan infrastruktur, dan berita terbaru.
+- [Profil Perusahaan](profil.php): Sejarah sejak 1925, visi & misi, Direktur & Dewan Pengawas, bagan struktur organisasi, direktori kepegawaian 17 cabang/unit, 10 program kerja, dan 6 filosofi logo.
+- [Air Minum](air-minum.php): Sumber air baku (473 L/dtk mata air + 40 L/dtk sungai), tabel kapasitas terpasang 513 L/dtk, sistem distribusi regional Cipondok & mata air lain, serta cakupan pelayanan 2019-2023.
+- [Pelanggan & Prosedur](layanan.php): 6 layanan digital online + 5 prosedur resmi (Sambungan Baru, Bukaan Kembali, Penutupan Sambungan, Pembayaran Rekening, Balik Nama) & FAQ.
+- [Tarif & Mitra Bayar](tarif.php): Klasifikasi pelanggan, Daftar Tarif Air 2025, Biaya Pemasangan Baru (Sambar), simulasi perkiraan tagihan, dan mitra pembayaran.
+- [Berita & Panduan](berita.php): Pemberitahuan gangguan aliran air, perbaikan pipa distribusi, laporan kinerja, dan tips pelanggan.
+- [Galeri Foto](galeri.php): Dokumentasi pemasangan pipa HDD Jl. SL Tobing - Jl. Paseh, kegiatan pegawai, dan infrastruktur air baku.
+- [Kontak & 17 Cabang](kontak.php): Alamat Kantor Pusat, peta lokasi, formulir pesan pelanggan ke database, dan direktori 17 cabang/unit.
 
 ## Layanan Digital Pelanggan (Direct Portals)
 - Cek Tagihan Rekening Air: http://asindotama.com/layanantirtasukapura/

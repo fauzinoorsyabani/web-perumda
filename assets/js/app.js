@@ -26,6 +26,70 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // 2b. Mobile Submenu Accordion
+  document.querySelectorAll('[data-mobile-sub-toggle]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const panel = btn.closest('div')?.parentElement?.querySelector('[data-mobile-sub-panel]');
+      panel?.classList.toggle('hidden');
+    });
+  });
+
+  // 2c. Global Image Lightbox (Infographics, Struktur Organisasi, Tarif 2025, Galeri)
+  const lbModal = document.getElementById('lightbox-modal');
+  const lbImg = document.getElementById('lightbox-img');
+  const lbCaption = document.getElementById('lightbox-caption');
+  const lbClose = document.getElementById('lightbox-close');
+
+  const closeLightbox = () => {
+    lbModal?.classList.add('hidden');
+    document.body.classList.remove('overflow-hidden');
+  };
+
+  document.querySelectorAll('[data-lightbox]').forEach((trigger) => {
+    trigger.addEventListener('click', () => {
+      if (!lbModal || !lbImg) return;
+      lbImg.src = trigger.getAttribute('data-lightbox') || '';
+      lbImg.alt = trigger.getAttribute('data-caption') || '';
+      if (lbCaption) lbCaption.textContent = trigger.getAttribute('data-caption') || '';
+      lbModal.classList.remove('hidden');
+      document.body.classList.add('overflow-hidden');
+    });
+  });
+
+  lbClose?.addEventListener('click', closeLightbox);
+  lbModal?.addEventListener('click', (e) => {
+    if (e.target === lbModal) closeLightbox();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeLightbox();
+  });
+
+  // 2d. Staff / Gallery Tab Filter (profil.php & galeri.php)
+  document.querySelectorAll('[data-filter-group]').forEach((group) => {
+    const groupName = group.getAttribute('data-filter-group');
+    const btns = group.querySelectorAll('[data-filter-val]');
+    const items = document.querySelectorAll(`[data-filter-item="${groupName}"]`);
+
+    btns.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const val = btn.getAttribute('data-filter-val') || 'all';
+        btns.forEach((b) => {
+          const active = b.getAttribute('data-filter-val') === val;
+          b.classList.toggle('bg-[#102A43]', active);
+          b.classList.toggle('text-white', active);
+          b.classList.toggle('bg-white', !active);
+          b.classList.toggle('text-[#52606D]', !active);
+          b.classList.toggle('border', !active);
+          b.classList.toggle('border-[#DCE1E5]', !active);
+        });
+        items.forEach((item) => {
+          const match = val === 'all' || item.getAttribute('data-filter-cat') === val;
+          item.classList.toggle('hidden', !match);
+        });
+      });
+    });
+  });
+
   // 3. Subtle Editorial Scroll Reveals
   const revealEls = document.querySelectorAll('.reveal');
   if (revealEls.length > 0 && 'IntersectionObserver' in window) {

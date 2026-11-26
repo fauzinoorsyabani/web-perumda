@@ -9,11 +9,14 @@ $base = getSiteBaseUrl();
 $today = date('Y-m-d');
 
 $staticPages = [
-    ['loc' => '/',            'priority' => '1.0', 'changefreq' => 'daily'],
-    ['loc' => '/layanan.php', 'priority' => '0.9', 'changefreq' => 'weekly'],
-    ['loc' => '/profil.php',  'priority' => '0.8', 'changefreq' => 'monthly'],
-    ['loc' => '/berita.php',  'priority' => '0.9', 'changefreq' => 'daily'],
-    ['loc' => '/kontak.php',  'priority' => '0.8', 'changefreq' => 'monthly'],
+    ['loc' => '/',              'priority' => '1.0', 'changefreq' => 'daily'],
+    ['loc' => '/profil.php',    'priority' => '0.9', 'changefreq' => 'monthly'],
+    ['loc' => '/air-minum.php', 'priority' => '0.9', 'changefreq' => 'monthly'],
+    ['loc' => '/layanan.php',   'priority' => '0.9', 'changefreq' => 'weekly'],
+    ['loc' => '/tarif.php',     'priority' => '0.9', 'changefreq' => 'monthly'],
+    ['loc' => '/berita.php',    'priority' => '0.9', 'changefreq' => 'daily'],
+    ['loc' => '/galeri.php',    'priority' => '0.7', 'changefreq' => 'monthly'],
+    ['loc' => '/kontak.php',    'priority' => '0.8', 'changefreq' => 'monthly'],
 ];
 
 echo '<?xml version="1.0" encoding="UTF-8"?>' . "\n";

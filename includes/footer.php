@@ -24,15 +24,14 @@
       </div>
 
       <div class="lg:col-span-2 space-y-2.5 text-sm">
-        <h3 class="font-display font-bold text-white text-sm">Menu</h3>
+        <h3 class="font-display font-bold text-white text-sm">Informasi</h3>
         <ul class="space-y-2">
-          <?php foreach ($navLinks as $item): ?>
-            <li>
-              <a href="<?= e($item['href']) ?>" class="text-slate-300 hover:text-white transition-colors">
-                <?= e($item['label']) ?>
-              </a>
-            </li>
-          <?php endforeach; ?>
+          <li><a href="profil.php" class="text-slate-300 hover:text-white">Profil &amp; Struktur</a></li>
+          <li><a href="air-minum.php" class="text-slate-300 hover:text-white">Air Minum &amp; Distribusi</a></li>
+          <li><a href="layanan.php" class="text-slate-300 hover:text-white">Prosedur Pelanggan</a></li>
+          <li><a href="tarif.php" class="text-slate-300 hover:text-white">Tarif Air 2025</a></li>
+          <li><a href="berita.php" class="text-slate-300 hover:text-white">Berita &amp; Panduan</a></li>
+          <li><a href="galeri.php" class="text-slate-300 hover:text-white">Galeri Foto</a></li>
         </ul>
       </div>
 
@@ -74,10 +73,22 @@
         <a href="sitemap.xml.php" class="hover:text-white">Sitemap</a>
         <a href="llms.txt" class="hover:text-white">llms.txt</a>
         <a href="kontak.php" class="hover:text-white">Kontak</a>
+        <a href="admin/login.php" class="hover:text-white">Admin</a>
       </div>
     </div>
   </div>
 </footer>
+
+<!-- Global Lightbox Modal for Official Infographics & Gallery Photos -->
+<div id="lightbox-modal" class="hidden fixed inset-0 z-50 bg-slate-950/85 flex items-center justify-center p-4">
+  <div class="relative max-w-5xl w-full flex flex-col items-center">
+    <button type="button" id="lightbox-close" class="self-end mb-2 px-3 py-1.5 rounded-md bg-white text-[#102A43] text-xs font-bold cursor-pointer">
+      Tutup (ESC)
+    </button>
+    <img id="lightbox-img" src="" alt="" class="max-h-[82vh] w-auto object-contain rounded-md bg-white" />
+    <p id="lightbox-caption" class="mt-3 text-sm text-slate-200 text-center max-w-2xl"></p>
+  </div>
+</div>
 
 <script src="assets/js/app.js"></script>
 </body>

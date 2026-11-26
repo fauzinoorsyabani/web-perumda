@@ -49,6 +49,23 @@ h1, h2, h3, h4, .font-display {
   box-shadow: 0 4px 20px rgba(16, 42, 67, 0.07);
 }
 
+/* Desktop Dropdown Menus (Clean Hover/Focus-Within Reveal) */
+.nav-dropdown-panel {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(6px);
+  transition: opacity var(--dur-fast) var(--ease-editorial),
+              transform var(--dur-fast) var(--ease-editorial),
+              visibility var(--dur-fast);
+}
+
+.nav-dropdown:hover .nav-dropdown-panel,
+.nav-dropdown:focus-within .nav-dropdown-panel {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
 /* Seamless Right-to-Left Marquee (Mitra & Live Ticker) */
 .marquee-viewport {
   position: relative;
